@@ -17,7 +17,7 @@ public class Author {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @ManyToMany(targetEntity = Book.class,mappedBy = "authors")
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Book> books;
 
     @Column(nullable = false)

@@ -3,9 +3,7 @@ package softuni.webprojectdemo.demo.models.entity;
 import org.hibernate.annotations.Cache;
 
 import javax.persistence.*;
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -34,7 +32,7 @@ public class User {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @OneToMany(targetEntity = Order.class,mappedBy = "user")
+    @OneToMany
     private List<Order> orders;
 
     public User() {

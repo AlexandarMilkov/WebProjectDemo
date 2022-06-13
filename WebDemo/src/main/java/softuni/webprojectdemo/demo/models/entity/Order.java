@@ -13,7 +13,7 @@ public class Order {
     @Column(name = "bppks_count")
     private int booksCount;
 
-    @ManyToOne
+    @ManyToMany
     private List<Book> books;
 
     @Column(nullable = false)

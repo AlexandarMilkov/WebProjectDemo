@@ -3,6 +3,7 @@ package softuni.webprojectdemo.demo.models.entity;
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -23,11 +24,15 @@ public class Book {
     @Column(nullable = false)
     private int pages;
 
-    //Text
     @Column(columnDefinition = "TEXT", nullable = false)
     private String resioume;
 
-    @ManyToMany(targetEntity = Author.class,mappedBy = "books")
+
+    @OneToMany
+    private Set<Comment> comments;
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Author> authors;
 
     public long getId() {
