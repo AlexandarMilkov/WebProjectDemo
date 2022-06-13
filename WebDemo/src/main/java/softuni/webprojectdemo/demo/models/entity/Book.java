@@ -1,7 +1,7 @@
 package softuni.webprojectdemo.demo.models.entity;
 
 import javax.persistence.*;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,12 +28,27 @@ public class Book {
     private String resioume;
 
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Set<Author> authors;
+
     @OneToMany
     private Set<Comment> comments;
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Author> authors;
+    public Book() {
+    this.authors = new HashSet<>();
+    this.comments = new HashSet<>();
+    }
+
+
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
 
     public long getId() {
         return id;
@@ -83,14 +98,13 @@ public class Book {
         this.resioume = resioume;
     }
 
-    public List<Author> getAuthors() {
+    public Set<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<Author> authors) {
+    public void setAuthors(Set<Author> authors) {
         this.authors = authors;
     }
 
-    public Book() {
-    }
+
 }
